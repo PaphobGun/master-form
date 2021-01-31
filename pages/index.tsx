@@ -79,7 +79,12 @@ const Home = () => {
         <CandidateForm onFinish={handleCreateCandidate} />
       </div>
       <div className="action">
-        <Button onClick={handleOnClickDeleteButton} danger type="primary">
+        <Button
+          disabled={selectedRowKeys.length <= 0}
+          onClick={handleOnClickDeleteButton}
+          danger
+          type="primary"
+        >
           DELETE
         </Button>
       </div>

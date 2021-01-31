@@ -26,7 +26,6 @@ const reducer = (state = initialState, action: AnyAction) => {
         ...action.candidate,
         id: uuid(),
       };
-      console.log(newCandidate);
       return {
         ...state,
         candidates: [...state.candidates, newCandidate],
@@ -37,7 +36,6 @@ const reducer = (state = initialState, action: AnyAction) => {
       );
       let newCandidates = [...state.candidates];
       newCandidates[targetIndex] = action.candidate;
-      console.log(action.candidate);
 
       return {
         ...state,
@@ -48,7 +46,9 @@ const reducer = (state = initialState, action: AnyAction) => {
         ...state,
         candidates: [
           ...state.candidates.filter(({ id }) => {
-            const isExists = action.id.some((actionId) => actionId === id);
+            const isExists = action.id.some(
+              (actionId: string) => actionId === id
+            );
             return !isExists;
           }),
         ],
